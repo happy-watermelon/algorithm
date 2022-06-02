@@ -1,0 +1,21 @@
+import java.util.Scanner;
+//输入三位数,拆解个十百位并单独输出
+public class disclose123 {
+    public static void main(String[] args) {
+        int number=0;
+        Scanner sc=new Scanner(System.in);
+        number=sc.nextInt();
+        /*笨比写法,自己写的
+        int a=number/100;
+        int b=(number-a*100)/10;
+        int c=number-a*100-b/10;
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+        */
+        //好的写法
+        System.out.println(number/100%10);
+        System.out.println(number/10%10);
+        System.out.println(number%10);
+    }
+}
