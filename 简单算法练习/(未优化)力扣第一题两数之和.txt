@@ -14,7 +14,7 @@
 
 来源：力扣（LeetCode）
 */
-//暂时只会暴力解法
+//暂时只会暴力解法,将来复习了hash表,再回来写优化的解题方法
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int[] res = new int[2];
