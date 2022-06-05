@@ -12,3 +12,20 @@ class Solution {
         return tmp == n;//判断倒置后是否和原数相等
     }
 }
+//第二版
+class Solution {
+    public boolean isPalindrome(int x) {
+        int y=0;//用来作为逆置数
+        int temp=x;//存放原本的数字到时候与逆置数字进行比较
+
+        if(x<0)return(false);
+        if(x==0)return(true);
+        while(x>0)
+    {
+        int a = x % 10;
+        x /= 10;
+        y = y*10+a;
+    }
+    return (temp==y);
+}
+}
