@@ -1,0 +1,95 @@
+//给定两个整数,将两数相除,不能用乘法除法和%,求商和余数
+/*第一版,算负数会错,所以优化了第二版本
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入两个数字,作为被除数和除数:");
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        int temp=x-y;
+        int count=0;
+        while (temp>=0){
+            temp=temp-y;
+            count++;
+        }
+        System.out.println("商为:"+count);
+        System.out.println("余数为:"+(-temp));
+    }
+}
+*/
+
+//这个第二版
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入两个数字,作为被除数和除数:");
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        int temp = 0;
+        int count = 1;
+        int result = 0;//结果的符号判断标
+        //判断除数和被除数的符号
+        if (x > 0 && y < 0) {
+            y = -y;
+            result = 1;
+        } else if (x < 0 && y > 0) {
+            x = -x;
+            result = 1;
+        } else if (x < 0 && y < 0) {
+            x = -x;
+            y = -y;
+        }
+        //核心代码
+        temp = x - y;
+        while (temp >= y) {
+            temp = temp - y;
+            count++;
+        }
+        if (result == 0) {
+            System.out.println("商为:" + count);
+            System.out.println("余数为:" + temp);
+        } else if (result == 1) {
+            System.out.println("商为:" + -count);
+            System.out.println("余数为:" + -temp);
+        }
+
+    }
+
+}
+//第三版对第二版进行了优化,但仍然解决不了边界值问题,在今后学习之后再去好好去改
+class Solution {
+    public int divide(int a, int b) {
+     
+        int count = 0;
+        int result = 0;//结果的符号判断标
+        //判断除数和被除数的符号
+        if (a > 0 && b < 0) {
+            b = -b;
+            result = 1;
+        } else if (a < 0 && b > 0) {
+            a = -a;
+            result = 1;
+        } else if (a < 0 && b < 0) {
+            a = -a;
+            b = -b;
+        }else if(a==0)
+            result=2;
+        //核心代码
+        int temp = a;
+        while (temp >= b) {
+            temp = temp - b;
+            count++;
+        }
+        if (result == 0) 
+           return count;
+        else if(result==1)
+           return -count;
+        else
+            return 0;
+        
