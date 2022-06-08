@@ -18,7 +18,7 @@ class Solution {
         int result=0;
         while (a<=b)    {
             mid=(a+b)/2;
-            if (mid*mid<=x){
+            if (mid*mid<=x){//问题应该还是出在这,运算太大
                 result=mid;
                 a=mid+1;
 
