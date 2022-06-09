@@ -32,18 +32,23 @@ class Solution {
 //第三版:优化了二分法,通过
 class Solution {
     public int mySqrt(int x) {
-       if(x == 1)
-            return 1;
-        int min = 0;
-        int max = x;
-        while(max-min>1)
-        {
-            int mid = (max+min)/2;
-            if(x/mid<mid)
-                max = mid;
+     int a=1;
+        int b=x/2;
+        int mid=0;
+        int result=0;
+        if(x==1) return 1;
+        else{
+        while (a<=b)    {
+            mid=(a+b)/2;
+            if ((long)mid*mid<=x){//转为long
+                result=mid;
+                a=mid+1;
+
+            }
             else
-                min = mid;
+                b=mid-1;
         }
-        return min;
+       return result;
+    }
     }
 }
