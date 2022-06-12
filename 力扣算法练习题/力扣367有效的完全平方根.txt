@@ -1,0 +1,24 @@
+### 代码
+
+```java
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        int min=0;
+        int max=num/2;
+        int mid=min+((max-min)>>1);
+        if(num==1) return true;
+        else{
+        while(min<=max){
+            mid=min+((max-min)>>1);
+            if((long)mid*mid==num)
+            return true;
+            else if((long)mid*mid<num)
+            min=mid+1;
+            else
+            max=mid-1;
+        }
+        return false;
+    }
+    }
+}
+```

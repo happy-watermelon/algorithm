@@ -1,0 +1,50 @@
+解题思路
+刚开始的时候,也是没什么思路,后面用十进制转二进制在纸上演示了一下,一下子思路就清晰了
+用循环依次判断输入的数字是不是大于7,大于7的二次方,大于7的三次方...然后确定了七进制的位数
+用输入的值/相应的7的次方来确定该位数上的值
+然后减掉已经确定了的七进制的数,重复上述操作
+
+ps:用正负符号来判断正负,返回正确的值
+用 result+""将int型转成string型
+
+代码
+
+class Solution {
+    public String convertToBase7(int num) {
+            int fuhao=0;//0为正,1为负
+        if(num<0) {
+            num=-num;
+            fuhao=1;
+        }
+        int temp=7;//七进制的七
+        int count=0;//循环用的
+        int result=0;//输出结果
+       //用循环依次判断输入的数字是不是大于7,大于7的二次方,大于7的三次方...然后确定了七进制的位数
+        while(num-temp>=0){
+            temp*=7;
+            count++;
+        }
+       //用输入的值/相应的7的次方来确定该位数上的值
+        while (temp!=1) {
+            temp /= 7;
+            int wei=1;//记录七进制的位数;
+            for (int i = 0; i < count; i++) {
+                wei*=  10;
+            }
+        // 然后减掉已经确定了的七进制的数
+            result =result+ num / temp *wei;
+            num = num - num / temp * temp;
+            count--;
+
+        }
+    if(fuhao==0)
+       return result+"";
+    else 
+        return(-result+"");
+    }
+}
+
+作者：kuai-le-xi-gua
+链接：https://leetcode.cn/problems/base-7/solution/by-kuai-le-xi-gua-034e/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

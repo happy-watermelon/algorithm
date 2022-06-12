@@ -1,0 +1,49 @@
+ //第一版本:简单的只是用a*a求平方根,忽略了溢出的问题
+class Solution {
+    public int mySqrt(int x) {
+            int a=1;
+        
+            while (a*a<=x){
+                a++;      
+        }
+         return a-1;
+    }
+}
+//第二版本:用二分法来规避溢出的问题,但出现了时间复杂度过高,力扣平台计算超过时间限制的问题
+class Solution {
+    public int mySqrt(int x) {
+        int a=1;
+        int b=x;
+        int mid=0;
+        int result=0;
+        while (a<=b)    {
+            mid=(a+b)/2;
+            if (mid*mid<=x){
+                result=mid;
+                a=mid+1;
+
+            }
+            else
+                b=mid-1;
+        }
+       return result;
+    }
+}
+//第三版:优化了二分法,通过
+class Solution {
+    public int mySqrt(int x) {
+       if(x == 1)
+            return 1;
+        int min = 0;
+        int max = x;
+        while(max-min>1)
+        {
+            int mid = (max+min)/2;
+            if(x/mid<mid)
+                max = mid;
+            else
+                min = mid;
+        }
+        return min;
+    }
+}
