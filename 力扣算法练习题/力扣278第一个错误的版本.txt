@@ -1,0 +1,28 @@
+### 解题思路
+总体来说是比较简单,有之前做过的题相类似,用二分法来求解即可
+注意用 mid=left+((right-left)>>1)防溢出其他问题的话就比较常规了
+
+### 代码
+
+```java
+/* The isBadVersion API is defined in the parent class VersionControl.
+      boolean isBadVersion(int version); */
+
+public class Solution extends VersionControl {
+    public int firstBadVersion(int n) {
+        int right=n;
+        int left=1;
+        int mid=left+((right-left)>>1);
+        while(left<=right){
+            mid=left+((right-left)>>1);
+            if(isBadVersion(mid-1)==false&&isBadVersion(mid)==true)
+            return mid;
+            else if(isBadVersion(mid-1)==true)
+            right=mid-1;
+            else if(isBadVersion(mid)==false)
+            left=mid+1;
+        }
+        return -1;
+    }
+}
+```
