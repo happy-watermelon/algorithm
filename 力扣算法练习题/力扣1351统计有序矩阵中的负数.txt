@@ -1,0 +1,39 @@
+//第一种暴力法
+
+class Solution {
+    public int countNegatives(int[][] grid) {
+        int count=0;
+        for(int i=0;i<grid.length;i++ ){
+            for(int j=0;j<grid[0].length;j++){
+                if(grid[i][j]<0)
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+//第二种,用移动数组元素来做,是最优解
+    class Solution {
+    public int countNegatives(int[][] grid) {
+    int res=0;//记录负数个数
+    int i=grid.length-1;//记录矩阵的行数
+    int j=0;//记录矩阵的列数,最大grid[0].length
+    //初始坐标(grid.length,0),说明是矩阵左下角开始搜
+    //看清题目要求,矩阵"无论是按行还是按列，都以非递增顺序排列"
+    while(i>=0&&j<=grid[0].length-1){
+        //判断条件:行列不超过矩阵长度
+        if(grid[i][j]<0){
+            res=res+grid[0].length-j;
+        //如果坐标元素为负数,它右边的 元素一定也是负数
+         //如果坐标元素为正,那么他的左边和上边的元素一定也是正数
+            i--;//遍历的元素向上移动一行;
+        }
+        else
+            j++;//否则的话,往右移动继续找负数
+
+        }
+        return res;
+        }
+     }
+
