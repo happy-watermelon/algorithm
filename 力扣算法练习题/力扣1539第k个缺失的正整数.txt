@@ -26,6 +26,7 @@ class Solution {
         for(int n : arr){
             if (n<=k)
             k++;
-            }return k;
+            }
+            return k;
     }
 }
