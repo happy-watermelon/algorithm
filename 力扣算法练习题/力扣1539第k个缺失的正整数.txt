@@ -1,0 +1,31 @@
+### 解题思路
+思路见注释
+
+### 代码
+//####自己写的
+```java
+class Solution {
+    public int findKthPositive(int[] arr, int k) {
+        int count=0;//记录是遍历到的第几个缺失的正整数
+        for(int i=0,j=1;i<arr.length;j++){//i是index,j是1,2,3..
+            if(j==arr[i])//判断是否是缺失的正整数
+            i++;//未缺失,index+1继续遍历         
+            else{ 
+            if(++count==k)//缺失了,判断是否为第k个缺失的正整数
+            return j;//是的话就返回j
+            }
+        }
+        //i>=arr,length
+            return arr[arr.length-1]+k-count;
+    }
+}
+
+###大佬写的
+class Solution {
+    public int findKthPositive(int[] arr, int k) {
+        for(int n : arr){
+            if (n<=k)
+            k++;
+            }return k;
+    }
+}

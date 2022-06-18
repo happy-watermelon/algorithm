@@ -1,0 +1,29 @@
+### 解题思路
+简单的一道题,注意:字符-字符会自己转为ascii码来计算大小
+题目中没有说明,如果target大于等于数组中的所有元素,会返回数组第一个元素
+
+### 代码
+
+```java
+class Solution {
+    public char nextGreatestLetter(char[] letters, char target){
+            int left=0;
+            int right=letters.length-1;
+            int mid=left+((right-left)>>1);
+            if(target-letters[letters.length-1]>=0)
+            return letters[0];
+            else{
+            while(left<=right){
+            mid=left+((right-left)>>1);
+                if(letters[mid]-target>0)
+                right=mid-1;
+                else 
+                left=mid+1;
+            }
+
+ 
+            return letters[left]; 
+    }
+    }
+}
+```
