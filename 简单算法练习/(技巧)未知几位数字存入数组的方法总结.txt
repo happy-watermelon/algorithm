@@ -1,0 +1,25 @@
+Scanner sc=new Scanner(System.in);
+        int number=sc.nextInt();
+        int index=wei(number);//调用wei方法获取number长度
+        int []nums=disclose(number,index);//把每一位存入数组
+
+public static int[] disclose(int x,int index){//将数字存入数组
+        int []nums=new int[index];
+        for (int i = nums.length-1; i >=0; i--) {
+
+                int a = x % 10;
+                x = x / 10;
+                nums[i] = a;
+
+        }
+        return nums;
+    }
+    public static int wei(int x){//判断输入数字的位数
+        int count=0;
+        while(x!=0){
+            x/=10;
+            count++;
+        }
+        return count;
+    }
+}
