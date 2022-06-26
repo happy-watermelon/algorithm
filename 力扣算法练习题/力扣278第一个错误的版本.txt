@@ -25,4 +25,21 @@ public class Solution extends VersionControl {
         return -1;
     }
 }
+
+优化写法
+public class Solution extends VersionControl {
+    public int firstBadVersion(int n) {
+        int right=n;
+        int left=1;
+        int mid=left+((right-left)>>1);
+        while(left<=right){
+            mid=left+((right-left)>>1);
+           if (isBadVersion(mid))
+           right=mid-1;
+           else
+           left=mid+1; 
+    }
+    return left;
+}
+}
 ```
