@@ -1,16 +1,43 @@
-class Solution {
-    public int specialArray(int[] nums) {
-       
-            for(int i=0;i<nums.length+1;i++){
-                 int count=0;
+解题思路
+像我这样的新手,开始只是能够看出来这道题可以二分,但是却不知道怎么做
+所以先用暴力法O(n方)的两次循环直接做
+然后再来想办法优化,思路就清晰多了,在第二层循环中,采用二分来做就好了
+
+代码
+
+暴力:
+    class Solution {
+        public int specialArray(int[] nums) {
+            for(int i=1;i<nums.length+1;i++){
+                int c=0;
                 for(int j=0;j<nums.length;j++){
-                if(nums[j]>=i)
-                count++;
+                    if(i<=nums[j])
+                    c++;
                 }
-                if(count==i){
-                    return count;
-                }
+                if(c==i)
+                return i;
             }
             return -1;
+        }
     }
-}
+
+
+二分代码
+
+```java
+class Solution {
+    public int specialArray(int[] nums) {
+        Arrays.sort(nums);
+        int count=0;
+        for(int i=1;i<nums.length+1;i++){
+            int left=0;
+            int right=nums.length-1;
+                while(left<=right){
+                    int mid=left+((right-left)/2);
+                    if(i<=nums[mid])
+                    right=mid-1;
+
+作者：kuai-le-xi-gua
+链接：https://leetcode.cn/problems/special-array-with-x-elements-greater-than-or-equal-x/solution/er-fen-fa-jie-jue-by-kuai-le-xi-gua-n271/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
