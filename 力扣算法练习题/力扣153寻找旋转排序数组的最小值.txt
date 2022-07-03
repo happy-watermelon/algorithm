@@ -1,0 +1,36 @@
+class Solution {
+    public int findMin(int[] nums) {
+        int left = 0;
+        int right = nums.length-1;
+        int min = Integer.MAX_VALUE;
+        while(left<=right){
+            int mid = left + (right - left)/2;
+            if(nums[left]<=nums[mid]){     //分割后 左边数组有序。
+                min = Math.min(min,nums[left]);    //因为有序，取最左值，更新最小值
+                left = mid + 1;  //更新边界
+            }else{
+                min = Math.min(min,nums[mid]);   //分割后，右边数组有序，与上面操作相对。
+                right = mid - 1;  
+            }
+        }
+        return min;
+    }
+}
+
+方法二,更具有普适性
+class Solution {
+    public int findMin(int[] nums) {
+        int len =nums.length;
+        int left=0;
+        int mid=0;
+        int right=len-1;
+        while(left<=right){
+            mid=left+((right-left)>>1);
+            if(nums[mid]<nums[right])
+            right=mid;
+            else
+            left=mid+1;
+        }
+        return nums[mid];
+    }
+}
