@@ -27,4 +27,22 @@
 	min=mid+1;//这里注意,如果if条件里mid<=x,那么这里应该写min=mid;
 		}
 	}
- 
+ ###二分最终的返回值到底是return什么呢?
+这里要看最终的情况
+
+[1]  while (left <= right)
+最终left会变得大于right
+所以left不可以被return,可以选择left或者right
+
+[2]right =mid;
+while(left<right)
+这里最终会是left==right时退出循环
+但是mid还是上次的那个值
+他不会在进入循环进行处理
+所以这里的话,不可以返回mid
+应该返回left或者right;
+
+
+
+
+
