@@ -1,0 +1,18 @@
+class Solution {
+    public int minArray(int[] numbers) {
+        int len=numbers.length;
+        int left=0;
+        int right=len-1;
+        int mid=0;
+        while(left<right){
+            mid=left+((right-left)>>1);
+            if(numbers[right]>numbers[mid])
+                right=mid;           
+            else if(numbers[right]<numbers[mid])
+                left=mid+1;
+            else
+                right--;
+        }
+        return numbers[left];
+    }
+}
