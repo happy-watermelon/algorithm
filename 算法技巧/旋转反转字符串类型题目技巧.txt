@@ -1,0 +1,25 @@
+常见题目
+力扣 344,541,151,剑指offer05,58
+
+主要就是
+
+把字符串转为字符数组,然后整体reverse在个体reverse
+
+
+ public void reverse(char []c,int begin,int end){
+        for(int i=begin,j=end;i<j;i++,j--){
+            char tmp=c[i];
+            c[i]=c[j];
+            c[j]=tmp;
+        }
+    }
+
+
+也可以用异或运算符
+public void reverse(char []c,int begin,int end){
+        for(int i=begin,j=end;i<j;i++,j--){
+            c[j]=c[i];
+            c[i]=c[j];
+            c[j]=c[i];
+        }
+    }
